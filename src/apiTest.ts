@@ -13,7 +13,9 @@ async function main() {
 
   const details = await client.dashboard();
 
-  console.log(details);
+  // log first course
+  const course = details.courses.filter(c => c.course.status === 'active')[0];
+  console.log(course);
 }
 
 main()
