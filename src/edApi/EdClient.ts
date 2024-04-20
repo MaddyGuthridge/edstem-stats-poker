@@ -1,7 +1,9 @@
 import consts from '../consts';
 import ApiError from './ApiError';
-import { fetchUserInfo } from './api/user';
-import { HttpVerb, TRegion } from './types';
+import { EdCourse } from './api/course';
+import { fetchDashboardInfo } from './api/dashboard';
+import { EdThread } from './api/thread';
+import { HttpVerb, TRegion } from './types/misc';
 
 /** URLs used when accessing EdStem */
 type EdUrls = {
@@ -51,11 +53,19 @@ export class EdClient {
     this.region = region;
   }
 
+  course(courseId: number) {
+    return new EdCourse(this, courseId);
+  }
+
+  thread(courseId: number, threadId: number) {
+    return new EdThread(this, courseId, threadId);
+  }
+
   /**
-   * Fetch user info
+   * Fetch dashboard info
    */
-  async userInfo() {
-    return fetchUserInfo(this);
+  async dashboard() {
+    return fetchDashboardInfo(this);
   }
 
   /**
@@ -75,10 +85,10 @@ export class EdClient {
    * )
    * ```
    */
-  async _apiRequest(
+  async __apiRequest(
     method: HttpVerb,
     path: string,
-    options?: {qs?: Record<string, string>, body?: object},
+    options?: {qs?: Record<string, any>, body?: object},
   ) {
     const opts = options || {};
 

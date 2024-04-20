@@ -11,7 +11,7 @@ async function main() {
   }
   const client = edClient('au', apiKey);
 
-  const details = await client.userInfo();
+  const details = await client.dashboard();
 
   console.log(details);
 }
