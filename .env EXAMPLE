@@ -1,3 +1,4 @@
 PORT=5000
 IP=localhost
 ACCESS_TOKEN_SECRET=bigsecret
+EDSTEM_API_KEY=not.tellingyou

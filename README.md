@@ -16,3 +16,7 @@ cd edstem-stats-poker
 npm i
 npm run dev
 ```
+
+## Credits
+
+* [smartspot2/edapi](https://github.com/smartspot2/edapi): API information
